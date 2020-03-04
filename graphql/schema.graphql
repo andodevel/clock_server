@@ -1,0 +1,33 @@
+# Ref Schema Definition Language: https://graphql.org/learn/schema/
+
+# SCALAR
+scalar DateTime
+
+type Query {
+  app: App!
+  user(id: ID): User!
+  users: [User!]
+}
+# -------------END SCALAR
+
+# QUERY
+type App {
+  name: String!
+  version: String!
+}
+
+type User {
+  id: ID!
+  name: String!
+  username: String!
+}
+# -------------END QUERY
+
+
+# MUTATION
+type Mutation {
+  register(username: String!, password: String!): User!
+  login(username: String!, password: String!): User!
+  logout: Boolean!
+}
+# -------------END MUTATION

@@ -1,0 +1,27 @@
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Out file
+*.o
+*.a
+*.so
+*.test
+*.prof
+*.out
+
+# Sensitive
+credentials.json
+token.json
+.env*local
+
+# 3rd and build
+vendor/
+tmp/
+bin/
+
+# IDE
+.vscode/*
+!.vscode/launch.json
+.idea

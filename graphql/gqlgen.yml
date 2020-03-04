@@ -1,0 +1,25 @@
+# .gqlgen.yml example
+#
+# Refer to https://gqlgen.com/config/
+# for detailed .gqlgen.yml documentation.
+
+schema:
+- schema.graphql
+exec:
+  filename: generated.go
+model:
+  filename: models_gen.go
+resolver:
+  filename: resolver.go
+  type: Resolver
+autobind: []
+models:
+  ID: # The GraphQL type ID is backed by
+    model:
+      - github.com/99designs/gqlgen/graphql.IntID # An go integer
+      - github.com/99designs/gqlgen/graphql.ID # or a go string
+  User:
+    model: github.com/andodevel/go-echo-template/graphql.User
+    fields:
+      # {{fieldName}}:
+      #   resolver: true
