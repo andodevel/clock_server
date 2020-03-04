@@ -10,10 +10,10 @@ import (
 	// SQLite3 driver for testing purpose
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 
-	"github.com/andodevel/go-echo-template/bootstrap"
-	"github.com/andodevel/go-echo-template/constants"
-	"github.com/andodevel/go-echo-template/db/seeds"
-	"github.com/andodevel/go-echo-template/models"
+	"github.com/andodevel/clock_server/bootstrap"
+	"github.com/andodevel/clock_server/constants"
+	"github.com/andodevel/clock_server/db/seeds"
+	"github.com/andodevel/clock_server/models"
 )
 
 // TODO: Performance - use connection pool

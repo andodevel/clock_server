@@ -1,4 +1,4 @@
-# Go-template changelog
+# clock_server changelog
 
 ## 0.0.1 DD.MM.yyyy
 *POC*

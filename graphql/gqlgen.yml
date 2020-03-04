@@ -19,7 +19,7 @@ models:
       - github.com/99designs/gqlgen/graphql.IntID # An go integer
       - github.com/99designs/gqlgen/graphql.ID # or a go string
   User:
-    model: github.com/andodevel/go-echo-template/graphql.User
+    model: github.com/andodevel/clock_server/graphql.User
     fields:
       # {{fieldName}}:
       #   resolver: true

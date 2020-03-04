@@ -1,7 +1,7 @@
 package seeds
 
 import (
-	"github.com/andodevel/go-echo-template/models"
+	"github.com/andodevel/clock_server/models"
 	"github.com/jinzhu/gorm"
 )
 

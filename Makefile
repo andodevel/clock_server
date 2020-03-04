@@ -30,32 +30,32 @@ ci: init
 
 .PHONY: build
 build: check
-	$(GO) build -o ./tmp/go-echo-template -ldflags '$(LDFLAGS)' ./server/go-echo-template/debug
+	$(GO) build -o ./tmp/clock_server -ldflags '$(LDFLAGS)' ./server/clock_server/debug
 
 .PHONY: install
 install: check
 	@echo "Installing..."
-	@$(GO) install -ldflags '$(LDFLAGS)' ./server/go-echo-template/debug
+	@$(GO) install -ldflags '$(LDFLAGS)' ./server/clock_server/debug
 
 .PHONY: debug
 debug: check
-	GOOS=darwin GOARCH=amd64 $(GO) build -ldflags '$(LDFLAGS)' -tags debug -o bin/macos/debug/go-echo-template ./server/go-echo-template/debug
-	GOOS=linux GOARCH=amd64 $(GO) build -ldflags '$(LDFLAGS)' -tags debug -o bin/linux/debug/go-echo-template ./server/go-echo-template/debug
-	GOOS=windows GOARCH=amd64 $(GO) build -ldflags '$(LDFLAGS)' -tags debug -o bin/windows/debug/go-echo-template.exe ./server/go-echo-template/debug
+	GOOS=darwin GOARCH=amd64 $(GO) build -ldflags '$(LDFLAGS)' -tags debug -o bin/macos/debug/clock_server ./server/clock_server/debug
+	GOOS=linux GOARCH=amd64 $(GO) build -ldflags '$(LDFLAGS)' -tags debug -o bin/linux/debug/clock_server ./server/clock_server/debug
+	GOOS=windows GOARCH=amd64 $(GO) build -ldflags '$(LDFLAGS)' -tags debug -o bin/windows/debug/clock_server.exe ./server/clock_server/debug
 
 .PHONY: release
 release: check
-	GOOS=darwin GOARCH=amd64 $(GO) build -ldflags '$(LDFLAGS)' -o bin/macos/release/go-echo-template ./server/go-echo-template/release
-	GOOS=linux GOARCH=amd64 $(GO) build -ldflags '$(LDFLAGS)' -o bin/linux/release/go-echo-template ./server/go-echo-template/release
-	GOOS=windows GOARCH=amd64 $(GO) build -ldflags '$(LDFLAGS)' -o bin/windows/release/go-echo-template.exe ./server/go-echo-template/release
+	GOOS=darwin GOARCH=amd64 $(GO) build -ldflags '$(LDFLAGS)' -o bin/macos/release/clock_server ./server/clock_server/release
+	GOOS=linux GOARCH=amd64 $(GO) build -ldflags '$(LDFLAGS)' -o bin/linux/release/clock_server ./server/clock_server/release
+	GOOS=windows GOARCH=amd64 $(GO) build -ldflags '$(LDFLAGS)' -o bin/windows/release/clock_server.exe ./server/clock_server/release
 
 .PHONY: docker-image
 docker-image:
-	docker build -t andodevel/go-echo-template:v1.10 -f ./Dockerfile .
+	docker build -t andodevel/clock_server:v1.10 -f ./Dockerfile .
 
 .PHONY: clean
 clean:
-	@$(GO) clean ./server/go-echo-template
+	@$(GO) clean ./server/clock_server
 
 .PHONY: ide
 ide:
@@ -63,7 +63,7 @@ ide:
 
 .PHONY: start
 start:
-	@$(GO) run ./server/go-echo-template/debug/main_debug.go
+	@$(GO) run ./server/clock_server/debug/main_debug.go
 
 .PHONY: gql-init
 gql-init:

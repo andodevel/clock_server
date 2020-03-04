@@ -6,7 +6,7 @@ import (
 
 	"github.com/joho/godotenv"
 
-	"github.com/andodevel/go-echo-template/constants"
+	"github.com/andodevel/clock_server/constants"
 )
 
 // TODO: Consider to use github.com/spf13/viper and github.com/fsnotify/fsnotify instead of godotenv

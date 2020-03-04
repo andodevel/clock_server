@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/golang:1.12.7
-    working_directory: /go/src/github.com/andodevel/go-template
+    working_directory: /go/src/github.com/andodevel/clock_server
     steps:
       - checkout
       - run: make ci

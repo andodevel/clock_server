@@ -1,4 +1,4 @@
-# go-echo-template readme
+# clock_server readme
 
 ## Requisites
 

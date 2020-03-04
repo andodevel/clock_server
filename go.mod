@@ -1,4 +1,4 @@
-module github.com/andodevel/go-echo-template
+module github.com/andodevel/clock_server
 
 go 1.12
 

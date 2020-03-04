@@ -7,7 +7,7 @@
       "request": "launch",
       "mode": "auto",
       "cwd": "${workspaceRoot}",
-      "program": "${workspaceRoot}/server/go-echo-template/debug/main_debug.go",
+      "program": "${workspaceRoot}/server/clock_server/debug/main_debug.go",
       "env": {
         "GO111MODULE": "on"
       },

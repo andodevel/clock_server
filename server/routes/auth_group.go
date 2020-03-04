@@ -3,8 +3,8 @@ package routes
 import (
 	"github.com/labstack/echo/v4"
 
-	"github.com/andodevel/go-echo-template/server/handlers"
-	"github.com/andodevel/go-echo-template/server/middlewares"
+	"github.com/andodevel/clock_server/server/handlers"
+	"github.com/andodevel/clock_server/server/middlewares"
 )
 
 // AuthGroup ...

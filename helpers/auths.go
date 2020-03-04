@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/andodevel/go-echo-template/models"
+	"github.com/andodevel/clock_server/models"
 	"github.com/dgrijalva/jwt-go"
 )
 

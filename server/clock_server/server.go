@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/andodevel/go-echo-template/helpers"
+	"github.com/andodevel/clock_server/helpers"
 
 	"github.com/99designs/gqlgen/handler"
 	"github.com/gorilla/sessions"
@@ -14,11 +14,11 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 
-	"github.com/andodevel/go-echo-template/bootstrap"
-	"github.com/andodevel/go-echo-template/constants"
-	"github.com/andodevel/go-echo-template/db"
-	"github.com/andodevel/go-echo-template/graphql"
-	"github.com/andodevel/go-echo-template/server/routes"
+	"github.com/andodevel/clock_server/bootstrap"
+	"github.com/andodevel/clock_server/constants"
+	"github.com/andodevel/clock_server/db"
+	"github.com/andodevel/clock_server/graphql"
+	"github.com/andodevel/clock_server/server/routes"
 )
 
 // Start ...
@@ -61,7 +61,7 @@ func Start() {
 				vars["username"] = claims.Username
 			}
 		}
-		var html, _ = helpers.ParseHTMLTemplateFile("index", "server/go-echo-template/templates/index.html", vars)
+		var html, _ = helpers.ParseHTMLTemplateFile("index", "server/clock_server/templates/index.html", vars)
 		return c.HTML(http.StatusOK, html)
 	})
 

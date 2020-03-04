@@ -32,5 +32,5 @@ const (
 // Misc
 const (
 	// AppName ...
-	AppName = "go-echo-template"
+	AppName = "clock_server"
 )

@@ -7,9 +7,9 @@ import (
 
 	"github.com/labstack/echo/v4"
 
-	"github.com/andodevel/go-echo-template/db"
-	"github.com/andodevel/go-echo-template/helpers"
-	"github.com/andodevel/go-echo-template/models"
+	"github.com/andodevel/clock_server/db"
+	"github.com/andodevel/clock_server/helpers"
+	"github.com/andodevel/clock_server/models"
 )
 
 // TODO: 1 JWT token - 1 session
@@ -41,7 +41,7 @@ func LoginView() echo.HandlerFunc {
 				return c.Redirect(http.StatusFound, "/")
 			}
 		}
-		var html, _ = helpers.ParseHTMLTemplateFile("login", "server/go-echo-template/templates//login.html", helpers.Map{})
+		var html, _ = helpers.ParseHTMLTemplateFile("login", "server/clock_server/templates//login.html", helpers.Map{})
 		return c.HTML(http.StatusOK, html)
 	}
 }
