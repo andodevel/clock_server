@@ -8,6 +8,7 @@ GO := GO111MODULE=on go
 
 .PHONY: init
 init:
+	go get -u github.com/skip2/go-qrcode/
 	go get -u github.com/99designs/gqlgen
 	go get -u golang.org/x/lint/golint
 	go get -u golang.org/x/tools/cmd/goimports

@@ -1,11 +1,14 @@
 package bootstrap
 
 import (
+	"image/color"
 	"log"
 	"os"
 
 	"github.com/joho/godotenv"
+	qrcode "github.com/skip2/go-qrcode"
 
+	"github.com/andodevel/clock_server/config"
 	"github.com/andodevel/clock_server/constants"
 )
 
@@ -23,6 +26,15 @@ var profile = constants.ProfileDevelopement
 // Init ...
 func Init() {
 	loadEnvs()
+	genQR()
+}
+
+func genQR() {
+	// FIXME: QR should be saved in FS or better in DB.
+	err := qrcode.WriteColorFile(config.GetClockURL(), qrcode.Medium, 512, color.Black, color.White, "assets/images/clock_qr.png")
+	if err != nil {
+		panic(err)
+	}
 }
 
 // TODO: OS ENV MUST HAVE HIGHEST PRIORITY!

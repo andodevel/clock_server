@@ -12,5 +12,6 @@ require (
 	github.com/labstack/echo v3.3.10+incompatible // indirect
 	github.com/labstack/echo-contrib v0.6.0
 	github.com/labstack/echo/v4 v4.1.10
+	github.com/skip2/go-qrcode v0.0.0-20191027152451-9434209cb086
 	github.com/vektah/gqlparser v1.1.2
 )

@@ -49,12 +49,15 @@ func Start() {
 	// TODO: Move serect key to config
 	e.Use(session.Middleware(sessions.NewCookieStore([]byte("secret"))))
 
+	// Serve static contents
+	e.Static("/static", "assets")
+
 	// Routes
 	// TODO: Replace static templates with Reactjs
 	e.GET("/", func(c echo.Context) error {
 		tokenCookie, _ := c.Cookie(helpers.JWTCookieKey)
 
-		vars := helpers.Map{"username": "Guest User"}
+		vars := helpers.Map{"username": "Buddy"}
 		if tokenCookie != nil {
 			claims, _ := helpers.ParseJWTToken(tokenCookie.Value)
 			if claims != nil {

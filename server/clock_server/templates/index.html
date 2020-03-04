@@ -13,6 +13,16 @@
   <!-- Bootstrap core CSS -->
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
+  <style>
+    .qr-container {
+      margin-top: 3rem;
+    }
+
+    .qr {
+      margin-bottom: 1.5rem;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -20,7 +30,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light static-top">
     <div class="container">
-      <a class="navbar-brand" href="#">clock_server</a>
+      <a class="navbar-brand" href="#">Clock Server</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
         aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -42,11 +52,16 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h1 class="mt-5">Welcome to clock_server</h1>
-        <p class="lead"></p>
-        <ul class="list-unstyled">
-          <li>{{.username}}</li>
-        </ul>
+        <h1 class="mt-5">Clock Server</h1>
+        <h6><small>v0.0.1</small></h6>
+        <div class="qr-container h-100">
+          <div class="row h-200 justify-content-center align-items-center">
+            <div class="col">
+              <div class="qr"><img class="img-responsive img-thumbnail" src="http://localhost:3000/static/images/clock_qr.png" alt="Clock QR"></div>
+              <div><span class="text-danger">{{.username}}, scan above QR to clock in/out</span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
