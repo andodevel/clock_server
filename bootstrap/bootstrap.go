@@ -31,7 +31,14 @@ func Init() {
 
 func genQR() {
 	// FIXME: QR should be saved in FS or better in DB.
-	err := qrcode.WriteColorFile(config.GetClockURL(), qrcode.Medium, 512, color.Black, color.White, "assets/images/clock_qr.png")
+	q, err := qrcode.New(config.GetClockURL(), qrcode.High)
+	if err != nil {
+		panic(err)
+	}
+	q.DisableBorder = true
+	q.ForegroundColor = color.Black
+	q.BackgroundColor = color.White
+	err = q.WriteFile(512, "assets/images/clock_qr.png")
 	if err != nil {
 		panic(err)
 	}
