@@ -50,7 +50,7 @@ build: check
 
 .PHONY: test
 test:
-	@$(GO) test ./server/clock_server
+	@$(GO) test -v ./...
 
 .PHONY: start
 start:
