@@ -1,6 +1,7 @@
-FROM golang:1.1.12
+FROM golang:1.13-alpine
+RUN apk --no-cache add make git gcc libtool musl-dev upx
 
-MAINTAINER An Do <andodevel@gmail.com>
+LABEL maintainer="An Do <andodevel@gmail.com>"
 
 ENV GOPATH /go
 ENV GO111MODULE on

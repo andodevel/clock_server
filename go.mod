@@ -1,6 +1,6 @@
 module github.com/andodevel/clock_server
 
-go 1.12
+go 1.13
 
 require (
 	github.com/99designs/gqlgen v0.9.3
