@@ -6,4 +6,9 @@ jobs:
     working_directory: /go/src/github.com/andodevel/clock_server
     steps:
       - checkout
-      - run: make ci
+      - run: 
+          name: "Install builing tools"
+          command: apk --no-cache add bash ncurses make git gcc libtool musl-dev upx
+      - run: 
+          name: "Run make ci target"
+          command: make ci

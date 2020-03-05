@@ -1,5 +1,6 @@
+# TODO: Correct this docker build
 FROM golang:1.13-alpine
-RUN apk --no-cache add make git gcc libtool musl-dev upx
+RUN apk --no-cache add bash ncurses make git gcc libtool musl-dev upx
 
 LABEL maintainer="An Do <andodevel@gmail.com>"
 

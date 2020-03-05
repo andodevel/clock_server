@@ -1,4 +1,4 @@
-SHELL := /bin/sh
+SHELL := /bin/bash
 
 VERSION := $(SHELL cat ./VERSION).
 LDFLAGS += -X "main.BuildTimestamp=$(SHELL date -u "+%Y-%m-%d %H:%M:%S")"
@@ -6,20 +6,21 @@ LDFLAGS += -X "main.Version=$(VERSION)$(SHELL git rev-parse --short HEAD)"
 
 GO := GO111MODULE=on go
 
-# Initialize project
+# FIXME: Correct working dir and cd to this.
+WORK_DIR=$(SHELL pwd)
+
+# Initialize project. All init(s) target should be run only once to create the project.
 .PHONY: init
-init:
-	go get -u golang.org/x/lint/golint
-	go get -u golang.org/x/tools/cmd/goimports
+init: dev-tools
 	go get -u github.com/skip2/go-qrcode/
 	go get -u github.com/99designs/gqlgen
-	@echo "Install pre-commit hook"
+	@echo "Install pre-commit hooks"
 	@chmod +x ./hack/check.sh
-	@chmod +x $(SHELL pwd)/hooks/pre-commit
-	@ln -sf $(SHELL pwd)/hooks/pre-commit $(SHELL pwd)/.git/hooks/pre-commit || true
+	@chmod +x ./hooks/pre-commit
+	@ln -sf ./hooks/pre-commit ./.git/hooks/pre-commit || true
 
-.PHONY: setup
-setup: init
+.PHONY: git-init
+git-init: 
 	git init
 
 .PHONY: gql-init
@@ -27,6 +28,11 @@ gql-init:
 	@[[ -d graphql ]] && cd graphql && ($(GO) run github.com/99designs/gqlgen init && rm -r server;)
 
 # Developement
+.PHONY: dev-tools
+dev-tools:
+	go get -u -mod=readonly golang.org/x/lint/golint
+	go get -u -mod=readonly golang.org/x/tools/cmd/goimports
+
 .PHONY: gql
 gql:
 	@[[ -d graphql ]] && cd graphql && ($(GO) run github.com/99designs/gqlgen -v)
@@ -39,6 +45,7 @@ check:
 docker-image:
 	docker build -t andodevel/clock_server:v0.0.1 -f ./Dockerfile .
 
+# Deprecated. Please use language server.
 .PHONY: ide
 ide:
 	@export GO111MODULE=auto && $(GO) mod vendor
@@ -79,8 +86,12 @@ clean:
 
 # CI/CD
 .PHONY: preci
-preci: 
-	@$(GO) mod tidy && $(GO) mod vendor
+preci: dev-tools
+	@$(GO) mod tidy
+	@$(GO) mod vendor
+	@export PATH=$PATH:${GOPATH}\bin
+	@echo "GOPATH was set: ${GOPATH}"
+	@echo "Add GOPATH to OS PATH variable: ${PATH}"
 
 .PHONY: ci
 ci: preci build test

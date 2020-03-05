@@ -1,4 +1,7 @@
-# clock_server readme
+# Clock Server
+
+Server side of clock in/out  
+[![CircleCI](https://circleci.com/gh/andodevel/clock_server.svg?style=svg)](https://circleci.com/gh/andodevel/clock_server) [![Coverage Status](https://coveralls.io/repos/github/andodevel/clock_server/badge.svg?branch=master)](https://coveralls.io/github/andodevel/clock_server?branch=master)  
 
 ## Requisites
 
@@ -33,3 +36,5 @@ In case `go module` not work well with VSCode, we need workaround by:
 2. Keep your project under `$GOPATH`  
 3. Execute `make ide` to update local `vendor` directory for every module change  
 4. Add `vendor` directory to .gitignore  
+  
+*Update:* Visual Code go language server works pretty well now. Should switch to it  
