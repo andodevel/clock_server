@@ -1,5 +1,6 @@
 SHELL := /bin/bash
 
+# FIXME: Variable not work at all
 VERSION := $(SHELL cat ./VERSION).
 LDFLAGS += -X "main.BuildTimestamp=$(SHELL date -u "+%Y-%m-%d %H:%M:%S")"
 LDFLAGS += -X "main.Version=$(VERSION)$(SHELL git rev-parse --short HEAD)"
@@ -30,8 +31,8 @@ gql-init:
 # Developement
 .PHONY: dev-tools
 dev-tools:
-	go get -u -mod=readonly golang.org/x/lint/golint
-	go get -u -mod=readonly golang.org/x/tools/cmd/goimports
+	go get -u golang.org/x/lint/golint
+	go get -u golang.org/x/tools/cmd/goimports
 
 .PHONY: gql
 gql:
@@ -41,32 +42,23 @@ gql:
 check:
 	@./hack/check.sh ${scope}
 
-.PHONY: docker-image
-docker-image:
-	docker build -t andodevel/clock_server:v0.0.1 -f ./Dockerfile .
-
 # Deprecated. Please use language server.
 .PHONY: ide
 ide:
 	@export GO111MODULE=auto && $(GO) mod vendor
 
 # Build and run
-.PHONY: build
-build: check
-	$(GO) build -o ./tmp/clock_server -ldflags '$(LDFLAGS)' ./server/clock_server/debug
-
 .PHONY: test
 test:
 	@$(GO) test -v ./...
 
+.PHONY: build
+build: check test
+	@$(GO) build -o ./tmp/clock_server -ldflags '$(LDFLAGS)' ./server/clock_server/debug
+
 .PHONY: start
 start:
 	@$(GO) run ./server/clock_server/debug/main_debug.go
-
-.PHONY: install
-install: check
-	@echo "Installing..."
-	@$(GO) install -ldflags '$(LDFLAGS)' ./server/clock_server/release
 
 .PHONY: debug
 debug: check
@@ -94,4 +86,17 @@ preci: dev-tools
 	@echo "Add GOPATH to OS PATH variable: ${PATH}"
 
 .PHONY: ci
-ci: preci build test
+ci: preci build
+
+.PHONY: install
+install:
+	@echo "Installing..."
+	@$(GO) install -ldflags '$(LDFLAGS)' ./server/clock_server/release
+
+.PHONY: docker-image
+docker-image:
+	@docker build -t andodevel/clock_server:0.0.1 -f ./Dockerfile .
+
+.PHONY: docker
+docker:
+	@docker container run --publish 3000:3000 --name clock_server andodevel/clock_server:0.0.1

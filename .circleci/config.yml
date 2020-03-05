@@ -12,3 +12,12 @@ jobs:
       - run: 
           name: "Run make ci target"
           command: make ci
+      - run:
+          name: Login into Heroku Docker Repository
+          command: |
+            docker login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY registry.heroku.com
+      - run:
+          name: Deploy Heroku Docker Container
+          command: |
+            heroku container:push web --app=clock-server-dragonfly
+            heroku container:release web --app=clock-server-dragonfly

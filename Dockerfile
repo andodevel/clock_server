@@ -6,9 +6,10 @@ LABEL maintainer="An Do <andodevel@gmail.com>"
 
 ENV GOPATH /go
 ENV GO111MODULE on
+ENV PATH="${PATH}/bin:${PATH}"
 
 COPY . /go/src/github.com/andodevel/clock_server
 WORKDIR /go/src/github.com/andodevel/clock_server
-RUN make ci && make install
+RUN make install
 
-ENTRYPOINT ["/go/bin/clock_server"]
+ENTRYPOINT ["release"]

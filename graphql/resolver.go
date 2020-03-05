@@ -44,7 +44,7 @@ type queryResolver struct{ *Resolver }
 
 func (r *queryResolver) App(ctx context.Context) (*App, error) {
 	var app = new(App)
-	app.Name = "Codelink SSO Proof Of Concept"
+	app.Name = "Clock Server"
 	app.Version = "0.0.1"
 	return app, nil
 }
