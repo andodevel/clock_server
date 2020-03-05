@@ -50,7 +50,8 @@ func Start() {
 	e.Use(session.Middleware(sessions.NewCookieStore([]byte("secret"))))
 
 	// Serve static contents
-	e.Static("/static", "assets")
+	e.Static("/favicon.ico", "app/assets/favicon.ico")
+	e.Static("/static", "app")
 
 	// Routes
 	// TODO: Replace static templates with Reactjs

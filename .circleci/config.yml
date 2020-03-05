@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/golang:1.13-alpine
+      - image: golang:1.13-alpine
     working_directory: /go/src/github.com/andodevel/clock_server
     steps:
       - checkout

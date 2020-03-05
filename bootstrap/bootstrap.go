@@ -38,7 +38,7 @@ func genQR() {
 	q.DisableBorder = true
 	q.ForegroundColor = color.Black
 	q.BackgroundColor = color.White
-	err = q.WriteFile(512, "assets/images/clock_qr.png")
+	err = q.WriteFile(512, "app/assets/images/clock_qr.png")
 	if err != nil {
 		panic(err)
 	}
