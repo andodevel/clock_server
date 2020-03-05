@@ -17,7 +17,7 @@ token.json
 .env*local
 
 # 3rd and build
-vendor/
+# vendor/
 tmp/
 bin/
 
