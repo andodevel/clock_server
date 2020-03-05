@@ -18,7 +18,8 @@ jobs:
     working_directory: ~/go/src/github.com/andodevel/clock_server
     steps:
       - checkout
-      - run: rm -rf ~/.local/share/heroku && heroku update
+      # 'heroku update' command not really work
+      - run: curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
       - run:
           name: Login into Heroku Docker Repository
           command: |
