@@ -18,6 +18,7 @@ jobs:
     working_directory: ~/go/src/github.com/andodevel/clock_server
     steps:
       - checkout
+      - run: rm -rf ~/.local/share/heroku && heroku update
       - run:
           name: Login into Heroku Docker Repository
           command: |
