@@ -16,11 +16,13 @@ Run OS-specific executable binary in `${baseDir}/bin` sub-folders
 
 ### Development
 
-Create your own `${baseDir}/.env.local` file  with *PORT* parameter to start echo server on, otherwise *8080* is used  
+Set env PORT to run app on desired port, otherwise *38080* is used  
 
 ```sh
-PORT=3000
+export PORT=80
 ```  
+
+In cloud environment, PORT is set by the provider.  
 
 Execute folllow command  
 

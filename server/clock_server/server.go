@@ -15,7 +15,6 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 
 	"github.com/andodevel/clock_server/bootstrap"
-	"github.com/andodevel/clock_server/constants"
 	"github.com/andodevel/clock_server/db"
 	"github.com/andodevel/clock_server/graphql"
 	"github.com/andodevel/clock_server/server/routes"
@@ -77,11 +76,7 @@ func Start() {
 	routes.AuthGroup(e)
 
 	// Start
-	envPort := bootstrap.Prop(constants.EnvPort)
-	if "" == envPort {
-		envPort = "8080"
-	}
-	e.Logger.Fatal(e.Start(":" + envPort))
+	e.Logger.Fatal(e.Start(":" + bootstrap.GetPort()))
 }
 
 func playgroundHandler() echo.HandlerFunc {

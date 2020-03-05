@@ -32,5 +32,5 @@ const (
 // Misc
 const (
 	// AppName ...
-	AppName = "clock_server"
+	AppName = "Clock Server"
 )

@@ -8,7 +8,6 @@ import (
 	"github.com/joho/godotenv"
 	qrcode "github.com/skip2/go-qrcode"
 
-	"github.com/andodevel/clock_server/config"
 	"github.com/andodevel/clock_server/constants"
 )
 
@@ -31,7 +30,7 @@ func Init() {
 
 func genQR() {
 	// FIXME: QR should be saved in FS or better in DB.
-	q, err := qrcode.New(config.GetClockURL(), qrcode.High)
+	q, err := qrcode.New(GetClockURL(), qrcode.High)
 	if err != nil {
 		panic(err)
 	}
@@ -76,6 +75,16 @@ func Prop(prop string) string {
 	return os.Getenv(prop)
 }
 
+// PropDefault ...Get property from enviroment settings, if not exist return defaultValue
+func PropDefault(prop string, defaultValue string) string {
+	value := os.Getenv(prop)
+	if "" != value {
+		return value
+	}
+
+	return defaultValue
+}
+
 // GetProfile ...
 func GetProfile() string {
 	return profile
@@ -99,4 +108,18 @@ func EnableDebug() {
 // DisableDebug ...
 func DisableDebug() {
 	isDebugEnabled = false
+}
+
+func GetHost() string {
+	return "localhost"
+}
+
+func GetPort() string {
+	return PropDefault(constants.EnvPort, "38080")
+}
+
+// GetClockURL ...
+func GetClockURL() string {
+	// FIXME: resolve current host and port
+	return "http://" + GetHost() + ":" + GetPort() + "/clock"
 }

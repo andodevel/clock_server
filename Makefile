@@ -99,4 +99,4 @@ docker-image:
 
 .PHONY: docker
 docker:
-	@docker container run --publish 3000:3000 --name clock_server andodevel/clock_server:0.0.1
+	@docker container run --publish 38080:38080 --name clock_server andodevel/clock_server:0.0.1
