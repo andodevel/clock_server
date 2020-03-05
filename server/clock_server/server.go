@@ -50,7 +50,7 @@ func Start() {
 	e.Use(session.Middleware(sessions.NewCookieStore([]byte("secret"))))
 
 	// Serve static contents
-	e.Static("/favicon.ico", "app/assets/favicon.ico")
+	e.File("/favicon.ico", "app/favicon.ico")
 	e.Static("/static", "app")
 
 	// Routes
