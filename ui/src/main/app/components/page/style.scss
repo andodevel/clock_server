@@ -1,0 +1,28 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    left: 50%;
+    overflow: hidden;
+    position: absolute;
+    transform: translate(-50%, 0);
+    width: 100%;
+}
+
+.page__header {
+    background: #303030;
+    flex-basis: 4rem;
+    line-height: 1.5rem;
+    min-height: 4rem;
+    padding: 1rem;
+}
+
+.page__header-logo {
+    height: 60%;
+    vertical-align: middle;
+}
+
+.page__content {
+    flex-grow: 1;
+    overflow: hidden;
+}

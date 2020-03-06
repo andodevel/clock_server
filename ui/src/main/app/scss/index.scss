@@ -1,0 +1,64 @@
+@import "../../../../node_modules/normalize.css/normalize.css";
+@import "./colors";
+@import "./fontawesome/fontawesome";
+@import "./fontawesome/regular";
+@import "./fontawesome/light";
+@import "./fontawesome/solid";
+
+* {
+    box-sizing: border-box;
+}
+
+html, body, #main {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+
+body {
+    color: #515151;
+    line-height: 1;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 62.5%;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    margin: 0.2em 0;
+}
+
+h1 {
+    font-size: 4.5rem;
+}
+
+h2 {
+    font-size: 4rem;
+}
+
+h3 {
+    font-size: 3.5rem;
+}
+
+h4 {
+    font-size: 3rem;
+}
+
+h5 {
+    font-size: 2.5rem;
+}
+
+h6 {
+    font-size: 2rem;
+}
+
+a {
+    color: $color-primary;
+    text-decoration: none;
+
+    &:active, &:visited {
+        color: $color-primary;
+    }
+}

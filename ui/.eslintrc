@@ -1,0 +1,29 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["standard", "standard-react", "plugin:prettier/recommended"],
+  "plugins": ["babel", "react", "promise", "import", "prettier"],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "globals": {
+    "__DEV__": false,
+    "__TEST__": false,
+    "__PROD__": false,
+    "__COVERAGE__": false
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "key-spacing": 0,
+    "max-len": [2, 120, 2],
+    "object-curly-spacing": [2, "always"],
+    "no-duplicate-imports": 0,
+    "react/no-unused-prop-types": 0,
+    "import/no-duplicates": 2,
+    "no-console": "error",
+    "react/prop-types": 0,
+    "camelcase": "off",
+    "jsx-quotes": ["error", "prefer-double"],
+    "space-before-function-paren": 0
+  }
+}
